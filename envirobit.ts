@@ -42,7 +42,7 @@ namespace envirobit {
             control.waitMicros(200000)
             smbus.writeByte(this.addr, 0xf2, 0b00000111) // x16 humidity oversampling
             control.waitMicros(200000)
-            smbus.writeByte(this.addr, 0xf4, 0b10110111) // x16 oversampling, normal mode
+            smbus.writeByte(this.addr, 0xf4, 0b10110110) // x16 oversampling, forced mode
             control.waitMicros(200000)
             smbus.writeByte(this.addr, 0xf5, 0b10010000) // 500ms standby time, 16 filter coef
             control.waitMicros(200000)

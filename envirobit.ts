@@ -93,6 +93,9 @@ namespace envirobit {
 
         update(): void {
             this.setup()
+            smbus.writeByte(this.addr, 0xf4, 0b10110110) // x16 oversampling, forced mode
+            control.waitMicros(200000)
+            
             let raw: Buffer = smbus.readBuffer(this.addr, 0xf7, 8)
 
             let raw_temp: number = (raw[3] << 12) + (raw[4] << 4) + (raw[5] >> 4)
@@ -139,12 +142,10 @@ namespace envirobit {
         }
 
         getPressure(): number {
-            this.update()
             return this.pressure
         }
 
         getHumidity(): number {
-            this.update()
             return this.humidity
         }
 

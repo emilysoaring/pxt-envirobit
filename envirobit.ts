@@ -44,7 +44,7 @@ namespace envirobit {
             control.waitMicros(200000)
             smbus.writeByte(this.addr, 0xf4, 0b10110110) // x16 oversampling, forced mode
             control.waitMicros(200000)
-            smbus.writeByte(this.addr, 0xf5, 0b10010000) // 500ms standby time, 16 filter coef
+            smbus.writeByte(this.addr, 0xf5, 0b10100000) // 500ms standby time, filter off
             control.waitMicros(200000)
 
             // Registers 0x88 to 0x9F, then 0xA0 padding byte (b) and finally 0xA1
